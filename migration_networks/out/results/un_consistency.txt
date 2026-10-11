@@ -1,0 +1,5 @@
+pagerank_top10_2015: ['USA', 'RUS', 'DEU', 'UKR', 'FRA', 'ESP', 'GBR', 'TUR', 'MEX', 'AUS']
+un_ims_top10_mid2020 (IMS2024 revision): ['USA', 'DEU', 'SAU', 'GBR', 'FRA', 'ESP', 'CAN', 'ARE', 'AUS', 'RUS']
+set_overlap: 7/10 (missing from PageRank top10: ['ARE', 'CAN', 'SAU']; extra in PageRank top10: ['MEX', 'TUR', 'UKR'])
+notes: top-5 order (USA DEU SAU GBR FRA) verified against UN DESA; set of 10 verified stable 2015-2024 per Migration Data Portal.
+caveat: flow estimates derive from the same UN stock data -> this is a consistency check, not independent validation.

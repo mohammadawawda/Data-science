@@ -1,0 +1,9 @@
+,0
+test_spearman_full,0.6233004753603932
+test_spearman_base,0.33537774207396354
+test_pearson_log_full,0.6435953165381666
+test_pearson_log_base,0.41896602191543414
+train_pseudoR2_full,0.6068496880658913
+train_pseudoR2_base,0.12949942099173783
+n_train,165885.0
+n_test,41437.0

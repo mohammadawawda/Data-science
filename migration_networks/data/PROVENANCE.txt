@@ -1,0 +1,51 @@
+DATA PROVENANCE - pinned 2026-08-13 (verified against source pages + file fingerprints)
+
+1) MIGRATION FLOWS (bilat_mig CSV, 313,736 rows)
+   Dataset: Abel & Cohen, "Bilateral international migration flow estimates",
+   figshare item 7731233, within collection doi:10.6084/m9.figshare.c.4470464.
+   Methods paper: Abel, G.J. & Cohen, J.E. (2019), "Bilateral international
+   migration flow estimates for 200 countries", Scientific Data 6:82,
+   doi:10.1038/s41597-019-0089-3.
+   VERSION: Version 8 - input data IMS2024 (UN DESA International Migrant
+   Stock 2024) + WPP2024 (World Population Prospects 2024).
+   Identified from file fingerprints unique to V8 (per the author's version
+   notes at guyabel.com/publication/bilateral-international-migration-flow-estimates):
+     - TWN present as separate country (V8 first split Taiwan from China)
+     - CUW and SXM present in ALL periods (V8 first covers them fully)
+     - no Channel Islands entity (present in V7, absent here)
+     - row structure 228^2 x 4 periods + 230^2 x 2 periods = 313,736 exactly
+   Estimate column used: da_pb_closed (pseudo-Bayesian demographic accounting,
+   closed system) - best-performing method in the authors' validation
+   (Abel & Cohen 2019; confirmed again in Abel & Cohen 2022, Sci Data 9:173).
+   Known caveats to cite: pseudo-Bayesian weight calibrated mainly on
+   intra-European reported flows (may push global totals to the upper end);
+   flows are 5-yr minimum migrant transitions estimated from stock changes,
+   not observed moves; SUD/SCG consolidated before 2010-2015 (V4 correction,
+   retained in V8).
+
+2) GRAVITY COVARIATES
+   CEPII Gravity database, version V202211 (Conte, Cotterlaz & Mayer).
+   File: Gravity_csv_V202211.zip (Gravity_V202211.csv, 87 columns).
+   Subset used: years {1990,1995,2000,2005,2010,2015}, 20 columns,
+   deduplicated per (year, iso3_o, iso3_d) keeping the populated
+   country_id row (transition-year twin rows are all-NaN; verified no
+   double-populated pairs). Crosswalk: flows SUD -> CEPII SDN (pre-2010
+   CEPII SDN = "Sudan + South Sudan"); flows SCG -> CEPII SCG (exists
+   1992-2006).
+
+3) CONFLICT
+   UCDP/PRIO Armed Conflict Dataset version 26.1
+   (UcdpPrioConflict_v26_1.csv, 2,816 conflict-years 1946-2025).
+   War flag: any location-year at intensity_level 2 within [year0, year0+4];
+   successor codes mapped back to SUD/SCG for flow periods <= 2005.
+
+4) BASEMAP
+   Natural Earth 110m Admin 0 countries (public domain), geojson via the
+   nvkelso/natural-earth-vector GitHub mirror. Code aliases applied:
+   SDS->SSD, PSX->PSE, SAH->ESH.
+
+5) HUB CONSISTENCY CHECK
+   UN DESA International Migrant Stock, top-10 destinations at mid-2020
+   (IMS2024 revision): USA DEU SAU GBR FRA ESP CAN ARE AUS RUS.
+   Used as SET only. Semi-circular with (1) - consistency check, not
+   independent validation.

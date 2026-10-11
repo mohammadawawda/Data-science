@@ -1,0 +1,9 @@
+pandas>=2.0
+numpy>=1.26
+networkx>=3.3
+infomap==2.15.1
+scikit-learn>=1.4
+statsmodels>=0.14
+scipy>=1.11
+matplotlib>=3.8
+pycountry-convert>=0.7
